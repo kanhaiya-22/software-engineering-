@@ -1,0 +1,45 @@
+@startuml
+class Student {
+  - studentId: String
+  - name: String
+  - email: String
+  + registerForExam(exam: Exam): Void
+  + viewResults(): String
+}
+
+class Admin {
+  - adminId: String
+  - name: String
+  + manageStudents(): Void
+  + generateResults(): Void
+}
+
+class Exam {
+  - examId: String
+  - examDate: Date
+  + scheduleExam(): Void
+  + viewExamDetails(): String
+}
+
+class Registration {
+  - registrationId: String
+  - student: Student
+  - exam: Exam
+  + registerStudent(): Void
+}
+
+class Result {
+  - resultId: String
+  - exam: Exam
+  - student: Student
+  - marks: Double
+  + generateResult(): String
+}
+
+Student --> Registration
+Student --> Result
+Registration --> Exam
+Admin --> Student
+Admin --> Result
+
+@enduml
