@@ -1,0 +1,26 @@
+@startuml
+start
+
+:Enter Credentials;
+if (Credentials Valid?) then (yes)
+  :Authenticate User;
+  :Show Dashboard;
+  if (Admin?) then (yes)
+    :Manage Users;
+    :Manage Inventory;
+    :Generate Reports;
+  else
+    if (Employee?) then (yes)
+      :View Dashboard;
+      :Request Leave;
+    else
+      :View Dashboard;
+    endif
+  endif
+else
+  :Show Error Message;
+  stop
+endif
+
+stop
+@enduml
